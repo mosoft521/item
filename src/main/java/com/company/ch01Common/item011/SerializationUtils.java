@@ -15,8 +15,7 @@ public class SerializationUtils {
 
     // 序列化
     public static void writeObject(Serializable s) {
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME));
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(s);
             oos.close();
         } catch (Exception e) {
@@ -27,8 +26,7 @@ public class SerializationUtils {
     public static Object readObject() {
         Object obj = null;
         // 反序列化化
-        try {
-            ObjectInput input = new ObjectInputStream(new FileInputStream(FILE_NAME));
+        try (ObjectInput input = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             obj = input.readObject();
             input.close();
         } catch (Exception e) {
