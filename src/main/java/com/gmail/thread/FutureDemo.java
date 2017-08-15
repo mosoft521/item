@@ -13,12 +13,12 @@ import java.util.concurrent.Executors;
 public class FutureDemo {
     public static void main(String[] args) {
 
-        ExecutorService pool = Executors.newFixedThreadPool(3);
+        ExecutorService pool = Executors.newFixedThreadPool(3);//并发3个
 
         //CompletionService接口内部维护一个结果队列:一堆future....
         CompletionService<Integer> cs = new ExecutorCompletionService<>(pool);
 
-        for (int i = 1; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             cs.submit(new Callable<Integer>() {
 
                 @Override
@@ -32,7 +32,7 @@ public class FutureDemo {
             });
         }
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             try {
                 System.out.println(cs.take().get());
             } catch (InterruptedException e) {
@@ -43,8 +43,20 @@ public class FutureDemo {
                 e.printStackTrace();
             }
         }
-
         pool.shutdown();
-
     }
 }
+/*
+685
+936
+685
+896
+896
+896
+687
+687
+687
+219
+
+Process finished with exit code 0
+ */
