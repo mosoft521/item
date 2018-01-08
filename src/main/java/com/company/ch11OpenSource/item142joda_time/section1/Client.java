@@ -15,5 +15,10 @@ public class Client {
         System.out.println(dt.toLocalDate());
         //日期格式化
         System.out.println(dt.toString(DateTimeFormat.forPattern("yyyy年M月d日")));
+        System.out.println(dt.toString(DateTimeFormat.forPattern("yyMMddHHmmssSSS")));
+
+        double f = Double.valueOf("123");
+//        return Double.toString(f / 100);
+        System.out.println(String.format("%.2f", f / 100));
     }
 }
